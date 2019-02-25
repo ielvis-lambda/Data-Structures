@@ -41,7 +41,7 @@ class LinkedList:
         # what if we have an empty linked list?
         # check to see if head == None
         if not self.head:
-            return 0
+            return None
         # otherwise, we have elements to remove!
         # what if we only have a single linked list element?
         # check if self.head.next == None
@@ -113,29 +113,31 @@ class Queue:
 
     def dequeue(self):
         # Removes the head element and returns its values. Uses the remove_head method from our linked list.
-        self.storage.remove_head()
-        pass
+        dequeuedList = self.storage.remove_head()
+        return dequeuedList
 
     def len(self):
-        self.storage.getCount()
-        pass
+        length = self.storage.getCount()
+        return length
 
 
-newQueue = Queue()
+# newQueue = Queue()
 
-print(f"newQueue.len() is {newQueue.len}")
+# print(f"newQueue.len() is {newQueue.len()}")
 
-print(f"newQueue is {newQueue.dequeue}")
+# print(f"newQueue.len() is {newQueue.len()}")
 
-print(f"newQueue is {newQueue.storage.getCount()}")
+# print(f"newQueue is {newQueue.dequeue()}")
 
-newQueue.storage.add_to_tail(21)
+# print(f"newQueue is {newQueue.storage.getCount()}")
 
-print(f"newQueue is {newQueue.storage.getCount()}")
+# newQueue.storage.add_to_tail(21)
 
-newQueue.storage.add_to_tail(22)
+# print(f"newQueue is {newQueue.storage.getCount()}")
 
-print(f"newQueue is {newQueue.storage.contains(21)}")
+# newQueue.storage.add_to_tail(22)
 
-print(f"newQueue is {newQueue.storage.getCount()}")
+# print(f"newQueue is {newQueue.storage.contains(21)}")
+
+# print(f"newQueue is {newQueue.storage.getCount()}")
 
