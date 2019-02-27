@@ -40,34 +40,40 @@ class DoublyLinkedList:
     self.tail = node
 
   def add_to_head(self, value):
-    head = self.head
+    current_head = self.head
     # If there is no head create a new ListNode and set the head and the tail to this new node.
-    if not head:
+    if not current_head:
       node = ListNode(value)
       self.head = node
       self.tail = node
     # If there is a head then we can add this head value before our current value and point back to it using head.prev
     else:
-      head.insert_before(value)
-      self.head = head.prev
+      current_head.insert_before(value)
+      self.head = current_head.prev
     return self.head
 
   def remove_from_head(self):
-    head = self.head
+    current_head = self.head
     # If there is no head return None
-    if not head:
+    if not current_head:
       return None
-    # If there is one element in the list
-    if head == self.tail:
-      head.delete()
-      return None
-    # If there are multiple elements
+    # If there are one or more elements
     else:
-      head.delete()
-      return head.value
+      current_head.delete()
+      return current_head.value
 
 
   def add_to_tail(self, value):
+    current_tail = self.tail
+    # If there is no element make it the current tail
+    if not current_tail:
+      node = ListNode(value)
+      self.head = node
+      self.tail = node
+    # If there is one or more element insert after the current tail and set the new tail to be this value's `next`
+    else:
+      current_tail.insert(value)
+      self.tail = current_tail.next
     pass
 
   def remove_from_tail(self):
