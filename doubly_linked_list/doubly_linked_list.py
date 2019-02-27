@@ -112,10 +112,44 @@ class DoublyLinkedList:
             current_head.prev = node
 
     def move_to_end(self, node):
-        pass
+       # check if empty
+        if self.tail is not node:
+            # if in a middle spot
+            if node.next and node.prev:
+                node.delete()
+            current_tail = self.tail
+            # the new tail's prev should be the old node that's in behind it and likewise that item's `next` should now point to the new tail which is node
+            self.tail = node
+            node.prev = current_tail
+            current_tail.next = node
 
     def delete(self, node):
-        pass
+        # check if empty and return None if it is
+        if not self.head and not self.tail:
+            return None
+        # if the list only has a single node, delete it
+        # both self.head and self.tail should be None
+        if self.head == self.tail:
+            node.delete()
+            self.head = None
+            self.tail = None
+        # if given node is the head
+        if self.head == node:
+            # set the self.head pointer to the next node
+            self.head = node.next
+            # delete the node
+            node.delete()
+
+        # if the given node is the tail
+        if self.tail == node:
+            # set the self.tail pointer to the previous node
+            self.tail = node.prev
+        # delete the node
+            node.delete()
+        # otherwise, tnode is somewhere in the middle and we can delete normally
+        else:
+            # just call node.delete
+            node.delete()
 
     def get_max(self):
         pass
