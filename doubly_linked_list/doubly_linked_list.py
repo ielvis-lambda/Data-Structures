@@ -79,7 +79,7 @@ class DoublyLinkedList:
             self.tail = node
         # If there is one or more element insert after the current tail and set the new tail to be this value's `next`
         else:
-            current_tail.insert(value)
+            current_tail.insert_after(value)
             self.tail = current_tail.next
         pass
 
@@ -103,7 +103,7 @@ class DoublyLinkedList:
           # if in a middle spot remove the node
             if node.next and node.prev:
                 node.delete()
-            # refer to self.head 
+            # refer to self.head
             current_head = self.head
             # set current head to node since now it's in front
             self.head = node
@@ -152,4 +152,11 @@ class DoublyLinkedList:
             node.delete()
 
     def get_max(self):
-        pass
+        max = 0
+        # Start at the beginning looking for the max value and return that value
+        current = self.head
+        while current:
+            if current.value > max:
+                max = current.value
+            current = current.next
+        return max
